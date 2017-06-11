@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Stock Portfolio</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script src="js/main.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body ng-app = "myApp">
+	<nav>
+	</nav>
+
+	<div id="main">
+	<div id ="heading"><h3>smallcase Portfolio Builder</h3></div>
+	
+	<div class = "view" ng-controller="Controller1 as vm1" ng-init="vm1.submit()">
+		<span><h4>PICK STOCKS</h4></span>
+		<div class="special"></div>
+		<div class="container">
+		
+		<div id="remaining">Showing 6 - 12 of 20 matching stocks</div>
+		<div class="row">
+			<div ng-repeat="(key, value) in vm1.stocks.price">
+			 <!--| objLimitTo:8 track by $index -->
+			 <div remove-on-click ng-click="remove()"> 
+				<button id="myButton">
+					<div ng-click="vm1.add(key, value);" id="stock" class="col-4" >
+							<div id="leftStock">
+								<span id="stockName">{{key}}</span>
+								<span id="finanace">Financial Services</span>
+							</div>
+							<span id="stockValue">{{'₹' + value}}</span>
+					</div>
+				</button >
+			 </div>
+			</div>
+		</div>
+		</div>
+			
+</div>	
+
+	<div class="view"  ng-controller="Controller2 as vm2">
+		<span><h4 style = "background: #287DCE;">MANAGE PORTFOLIO</h4></span>
+		<div class="special" style="border-top: 16px solid #15569C;" ></div>
+
+		<div class="container">
+		<table>
+			<tr>
+				<th>STOCK</th>
+				<th>PRICE</th>
+				<th>SHARES</th>
+				<th>WEIGHT</th>
+			</tr>
+			<tr ng-repeat="item in vm2.list()" ng-init="vm2.send()">
+				<td>{{item.key}}</td>
+				<td>{{item.value}}</td>
+				<td>
+					<div id="incrementDiv">
+						<button ng-click="vm2.counter=vm2.counter+1">+</button>
+							<div id="counterValue">{{vm2.counter}}</div>
+						<button ng-click="vm2.decrement()">-</button>
+					</div>
+				</td>
+				<td>123</td>
+			</tr>
+		</table>
+		
+
+		
+		
+		</div>
+	</div>
+
+
+</div>
+</body>
+</html>
