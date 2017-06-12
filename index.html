@@ -26,7 +26,7 @@
 			 <!--| objLimitTo:8 track by $index -->
 			 <div remove-on-click ng-click="remove()"> 
 				<button id="myButton">
-					<div ng-click="vm1.add(key, value);" id="stock" class="col-4" >
+					<div ng-click="vm1.add(key, value, counter=1);" id="stock" class="col-4">
 							<div id="leftStock">
 								<span id="stockName">{{key}}</span>
 								<span id="finanace">Financial Services</span>
@@ -39,13 +39,13 @@
 		</div>
 		</div>
 			
-</div>	
+	</div>	
 
 	<div class="view"  ng-controller="Controller2 as vm2">
 		<span><h4 style = "background: #287DCE;">MANAGE PORTFOLIO</h4></span>
 		<div class="special" style="border-top: 16px solid #15569C;" ></div>
 
-		<div class="container">
+	<div class="container">
 		<table>
 			<tr>
 				<th>STOCK</th>
@@ -53,22 +53,30 @@
 				<th>SHARES</th>
 				<th>WEIGHT</th>
 			</tr>
-			<tr ng-repeat="item in vm2.list()" ng-init="vm2.send()">
+			<tr ng-repeat="item in vm2.list()">
 				<td>{{item.key}}</td>
 				<td>{{item.value}}</td>
 				<td>
 					<div id="incrementDiv">
-						<incre-decre></incre-decre>
+						<incre-decre counter="item.counter"></incre-decre>
 					</div>
 				</td>
-				<td>123</td>
+		
+				<td>0</td>
 			</tr>
 		</table>
-		
-
-		
-		
+		<div id="calcu">
+			<div id="stockLength">
+				<span class="righthead">Stocks</span><br>
+				<span class="rightvalue">{{vm2.list().length}}</span>
+			</div>
+			<div id="netWorth">
+				<span class="righthead">NetWorth</span><br>
+				<span class="rightvalue" ng-init="vm2.netWorth = 0">{{vm2.netWorth | number:2}}</span>
+			</div>
+			<button ng-click="vm2.detail()" id="build">BUILD PORTFOLIO</button>
 		</div>
+	</div>
 	</div>
 
 

@@ -71,9 +71,10 @@ div > h3 {
 
 .view {
 	margin-top: 40px;
-	background: #FFFFFF;
+	background-color: #FFFFFF;
 	width: 100%;
 	margin-left: 16px;
+	height: 100%;
 }
 
 span > h4 {
@@ -166,6 +167,7 @@ div > div > div > div.ng-scope {
 .container {
 	margin: 30px 0 30px 30px;
 	background-color: #FFFFFF;
+	height: 100%;
 }
 
 table {
@@ -173,6 +175,7 @@ table {
 	border-spacing: 0px;
 	border: 1px solid #DDDDDD;
 	border-top: 0px;
+	float: left;
 }
 
 tr > th {
@@ -235,4 +238,49 @@ tr {
 	border-left: 1px solid #DDDDDD;
 	border-right: 1px solid #DDDDDD;
 	display: inline-block;
+}
+
+#calcu {
+	float: right;
+	margin-right: 30px;
+	background-color: #FFFFFF;
+	display: inline-block;
+	text-align: left;
+}
+
+#stockLength {
+	display: inline-block;
+	width: 50%;
+	float: left;
+}
+
+#netWorth {
+	display: inline-block;
+	width: 50%;
+	margin-bottom: 20px;
+}
+
+#build {
+	display: block;
+	width: 215px;
+	height: 56px;
+	background-image: linear-gradient(90deg, #2BC4DD 0%, #3489D1 100%);
+	box-shadow: 0 1px 4px 0 rgba(0,0,0,0.30);
+	font-size: 18px;
+	color: #FFFFFF;
+	border: 0px;
+}
+
+#build:hover {
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.righthead {
+	font-size: 16px;
+	color: #287DCE;
+}
+.rightvalue {
+	font-size: 28px;
+	color: #222222;
+	line-height: 26px;
 }

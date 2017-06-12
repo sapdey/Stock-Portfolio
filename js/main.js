@@ -8,7 +8,6 @@
 
 			promise.then(function(response){
 				vm.stocks = response.data;
-				console.log(vm.stocks);
 
 			})
 			.catch(function(){
@@ -58,17 +57,41 @@
 	.controller('Controller2', function(items){
 		var vm = this;
             vm.list = items.list;
-            vm.send = function() {
-            	console.log(vm.list);
-           }
+            vm.priceHeld = 0;
+            
+            vm.detail = function(){
+            	vm.net = []
+            	vm.netWorth = 0;
+            	for(var i = 0; i<vm.list().length; i++) {
+            		vm.key = vm.list()[i].key;
+            		vm.value = vm.list()[i].value;
+            		vm.counter = vm.list()[i].counter;
+
+            		vm.priceHeld = vm.value * vm.counter;
+            		vm.net.push(vm.priceHeld);
+            	}
+
+            	//console.log(vm.key + ", " + vm.value + ", "+ vm.counter);
+            	
+            	for(var i in vm.net) {
+            		vm.netWorth += vm.net[i];
+            	}
+            }
+
+            	
+            
+
+
+
+           
 	})
 
 	.factory('items', function(){
 		var items = [];
 		var itemsService = {};
     
-	    itemsService.add = function(key, value) {
-	        items.push({key, value});
+	    itemsService.add = function(key, value, counter) {
+	        items.push({key, value, counter});
 	    };
 	    itemsService.list = function() {
 	        return items;
@@ -87,9 +110,11 @@
 	})
 	.directive('increDecre', function(){
 		return {
-			scope: {},
-			template: ` <button ng-init="counter = 1" ng-click="counter = counter + 1" class="smallButton">+</button>
-					    	<div id="counterValue">{{counter}}</div>
+			scope: {
+				counter: '='
+			},
+			template: ` <button ng-click="counter = counter + 1" class="smallButton">+</button>
+					    	<div id="counterValue" ng-model="detail.count">{{counter}}</div>
 					    <button ng-click="counter = counter - 1" ng-disabled="counter == 0" class="smallButton">-</button>`
 		}
 	})
