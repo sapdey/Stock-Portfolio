@@ -61,11 +61,6 @@
             vm.send = function() {
             	console.log(vm.list);
            }
-
-           vm.counter = 1;
-           vm.decrement = function() {
-           		vm.counter--;
-           }
 	})
 
 	.factory('items', function(){
@@ -82,14 +77,22 @@
 	    return itemsService;
 	})
 	.directive('removeOnClick', function() {
-    return {
-        link: function(scope, elt, attrs) {
-            scope.remove = function() {
-                elt.html('');
-            };
-        }
-    }
-});
+	    return {
+		link: function(scope, elt, attrs) {
+		    scope.remove = function() {
+			elt.html('');
+		    };
+		}
+	    }
+	})
+	.directive('increDecre', function(){
+		return {
+			scope: {},
+			template: ` <button ng-init="counter = 1" ng-click="counter = counter + 1" class="smallButton">+</button>
+					    	<div id="counterValue">{{counter}}</div>
+					    <button ng-click="counter = counter - 1" ng-disabled="counter == 0" class="smallButton">-</button>`
+		}
+	})
 
 
 
