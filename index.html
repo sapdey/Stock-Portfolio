@@ -62,7 +62,7 @@
 					</div>
 				</td>
 		
-				<td>0</td>
+				<td ng-if="vm2.netWorth>0">{{item.value * item.counter / vm2.netWorth | number:2}}%</td>
 			</tr>
 		</table>
 		<div id="calcu">
