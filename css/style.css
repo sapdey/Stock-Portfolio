@@ -215,7 +215,7 @@ tr {
 	height: 48px;
 }
 
-td > div > button {
+.smallButton {
 	background-color: #FFFFFF;
 	border: 1px solid #287DCE;
 	font-size: 12px;
@@ -225,7 +225,7 @@ td > div > button {
 	line-height: 12px;
 }
 
-td > div > button:active {
+.smallButton:active {
 	border: 0px;
 }
 
