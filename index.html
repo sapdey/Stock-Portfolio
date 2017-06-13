@@ -23,7 +23,7 @@
 		<div class="special"></div>
 		<div class="container">
 		
-		<div id="remaining">Showing 6 - 12 of 20 matching stocks</div>
+		<div id="remaining">Showing {{vm1.currentPage+1}} - {{vm1.currentPage+8}} of 24 matching stocks</div>
 		<div class="row">
 			<div ng-repeat="(key, value) in vm1.stocks.price" ng-if="$index >= vm1.currentPage && $index < vm1.currentPage+8">
 			 <div remove-on-click ng-click="remove()">
