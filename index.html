@@ -5,6 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="https://fonts.googleapis.com/css?family=Roboto:300" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
 	<script src="js/main.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
@@ -22,11 +24,10 @@
 		
 		<div id="remaining">Showing 6 - 12 of 20 matching stocks</div>
 		<div class="row">
-			<div ng-repeat="(key, value) in vm1.stocks.price">
-			 <!--| objLimitTo:8 track by $index -->
+			<div ng-repeat="(key, value) in vm1.stocks.price; ">
 			 <div remove-on-click ng-click="remove()"> 
 				<button id="myButton">
-					<div ng-click="vm1.add(key, value, counter=1);" id="stock" class="col-4">
+					<div ng-click="vm1.add(key, value, counter=1, eps = vm1.stocks.eps[key], history = vm1.stocks.historical[key]);" id="stock" class="col-4">
 							<div id="leftStock">
 								<span id="stockName">{{key}}</span>
 								<span id="finanace">Financial Services</span>
@@ -55,7 +56,7 @@
 			</tr>
 			<tr ng-repeat="item in vm2.list()">
 				<td>{{item.key}}</td>
-				<td>{{item.value}}</td>
+				<td>{{'₹' + item.value}}</td>
 				<td>
 					<div id="incrementDiv">
 						<incre-decre counter="item.counter"></incre-decre>
@@ -65,6 +66,7 @@
 				<td ng-if="vm2.netWorth>0">{{item.value * item.counter / vm2.netWorth | number:2}}%</td>
 			</tr>
 		</table>
+		<div id="graph"></div>
 		<div id="calcu">
 			<div id="stockLength">
 				<span class="righthead">Stocks</span><br>
@@ -74,11 +76,14 @@
 				<span class="righthead">NetWorth</span><br>
 				<span class="rightvalue" ng-init="vm2.netWorth = 0">{{vm2.netWorth | number:2}}</span>
 			</div>
+			<div id="eps">
+				<span class="righthead">P/E Ratio</span><br>
+				<span class="rightvalue" ng-init="vm2.pe = 0">{{vm2.pe | number:2}}</span>
+			</div>
 			<button ng-click="vm2.detail()" id="build">BUILD PORTFOLIO</button>
 		</div>
 	</div>
 	</div>
-
 
 </div>
 </body>
