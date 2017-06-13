@@ -182,7 +182,9 @@ div > div > div > div.ng-scope {
 	background-color: #FFFFFF;
 	height: 100%;
 }
-
+.table {
+	display: inline-block;
+}
 table {
 	width: 456px;
 	border-spacing: 0px;
@@ -255,7 +257,8 @@ tr {
 
 #calcu {
 	float: right;
-	margin: 20px 20px 0 0;
+	margin: 31px 0 0 0;
+	padding-right: 10px;
 	background-color: #FFFFFF;
 	display: inline-block;
 	text-align: left;
@@ -313,11 +316,12 @@ tr {
 #graphHead {
 	font-size: 24px;
 	color: #1D70CA;
+	margin-left: 45%;
 }
 
 #graph {
 	width: 400px;
 	height: 282px;
 	display: inline-block;
-	margin: 10px;
+	margin: 10px 0px 0px 5px;
 }

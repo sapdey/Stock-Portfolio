@@ -55,7 +55,7 @@
 		<div class="special" style="border-top: 16px solid #15569C;" ></div>
 
 	<div class="container">
-		<table>
+		<div id="table"><table>
 			<tr>
 				<th>STOCK</th>
 				<th>PRICE</th>
@@ -73,7 +73,7 @@
 		
 				<td ng-if="vm2.netWorth>0">{{item.value * item.counter / vm2.netWorth | number:2}}%</td>
 			</tr>
-		</table>
+		</table></div>
 		<div id="graphHead">Portfolio Overview</div>
 		<div id="graph" ng-if="vm2.list().length > 0"></div>
 		<div id="calcu">
@@ -81,10 +81,10 @@
 				<span class="righthead">Stocks</span><br>
 				<span class="rightvalue">{{vm2.list().length}}</span>
 			</div>
-			<div id="netWorth">
+			<span id="netWorth">
 				<span class="righthead">NetWorth</span><br>
 				<span class="rightvalue" ng-init="vm2.netWorth = 0">{{vm2.netWorth | number:2}}</span>
-			</div>
+			</span>
 			<div id="eps">
 				<span class="righthead">P/E Ratio</span><br>
 				<span class="rightvalue" ng-init="vm2.pe = 0">{{vm2.pe | number:2}}</span>
