@@ -8,8 +8,6 @@
 
 			promise.then(function(response){
 				vm.stocks = response.data;
-				console.log(vm.stocks);
-
 			})
 			.catch(function(){
 				console.log("promise error");
@@ -17,44 +15,11 @@
 		}
 
          vm.add = items.add; // transfer data to other controller
-         
+
+        vm.currentPage = 0;  
          
 	})
-	.service('Service', function($http){
-		var service = this;
-
-		service.getStock = function(){
-			var response = $http({
-				method: 'GET',
-				url: "data.json"
-			});
-
-			return response;
-		}
-
-	})
-	.filter('pagination', function()
-		{
-		  return function(input, start)
-			 {
-			  start = +start;
-			  return input.slice(start);
-			 };
-			})
-	// .filter('objLimitTo', [function(){
- //    return function(obj, limit){
- //        var keys = Object.keys(obj);
- //        if(keys.length < 1) return [];
- //        var ret = new Object();
- //        var count = 0;
- //        angular.forEach(keys, function(key, arrayIndex){
- //            if(count >= limit) return false;
- //            ret[key] = obj[key];
- //            count++;
- //        });
- //        return ret;
- //    };
-// }])
+	
 	.controller('Controller2', function(items){
 		var vm = this;
             vm.list = items.list;
@@ -104,8 +69,6 @@
 
             	}
             	vm.dataarr = vm.finalGraph[vm.finalGraph.length-1]
-            	console.log(vm.dataarr);
-            	
 
             	Highcharts.chart('graph', {
 				    chart: {
@@ -157,6 +120,20 @@
             } 
 	})
 
+	.service('Service', function($http){
+		var service = this;
+
+		service.getStock = function(){
+			var response = $http({
+				method: 'GET',
+				url: "data.json"
+			});
+
+			return response;
+		}
+
+	})
+
 	.factory('items', function(){
 		var items = [];
 		var itemsService = {};
@@ -170,6 +147,7 @@
 	    
 	    return itemsService;
 	})
+
 	.directive('removeOnClick', function() {
 	    return {
 		link: function(scope, elt, attrs) {
@@ -179,6 +157,7 @@
 		}
 	    }
 	})
+
 	.directive('increDecre', function(){
 		return {
 			scope: {
@@ -189,7 +168,5 @@
 					    <button ng-click="counter = counter - 1" ng-disabled="counter == 0" class="smallButton">-</button>`
 		}
 	})
-
-
 
 })();
