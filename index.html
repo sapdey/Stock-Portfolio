@@ -26,8 +26,7 @@
 		<div id="remaining">Showing {{vm1.currentPage+1}} - {{vm1.currentPage+8}} of 24 matching stocks</div>
 		<div class="row">
 			<div ng-repeat="(key, value) in vm1.stocks.price" ng-if="$index >= vm1.currentPage && $index < vm1.currentPage+8" class="col-3">
-			 <div remove-on-click ng-click="remove()"  style="max-width: 240px">
-				<button id="myButton">
+				<button id="myButton" style="max-width: 240px" ng-click="vm1.delete(key)">
 					<div ng-click="vm1.add(key, value, counter=1, eps = vm1.stocks.eps[key], history = vm1.stocks.historical[key]);" id="stock">
 							<div id="leftStock">
 								<span id="stockName">{{key}}</span>
@@ -35,8 +34,7 @@
 							</div>
 							<span id="stockValue">{{'₹' + value}}</span>
 					</div>
-				</button >
-			 </div>
+				</button>
 			</div>
 		</div>
 
