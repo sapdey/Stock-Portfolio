@@ -134,10 +134,7 @@ span > h4 {
 
 #myButton {
 	border: 0px;
-}
-
-div.col-3.ng-scope {
-	height: 90px;
+	margin-bottom: 15px;
 }
 
 #myButton:hover {
