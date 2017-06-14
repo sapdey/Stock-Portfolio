@@ -14,7 +14,10 @@
 			})
 		}
 
-         vm.add = items.add; // transfer data to other controller
+	vm.delete = function(key) {
+			delete vm.stocks.price[key];
+		}
+        vm.add = items.add; // transfer data to other controller
 
         vm.currentPage = 0;  
          
