@@ -151,16 +151,6 @@
 	    return itemsService;
 	})
 
-	.directive('removeOnClick', function() {
-	    return {
-		link: function(scope, elt, attrs) {
-		    scope.remove = function() {
-			elt.html('');
-		    };
-		}
-	    }
-	})
-
 	.directive('increDecre', function(){
 		return {
 			scope: {
