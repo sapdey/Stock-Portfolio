@@ -133,7 +133,7 @@ span > h4 {
 }
 
 #filter > span {
-	background: url(/png/filter.png);
+	background: url(Stock-Portfolio/png/filter.png);
 	width: 17px;
 	height: 17px;
 	display: inline-block;
@@ -338,7 +338,7 @@ tr {
 }
 
 #remove {
-	background: url(/png/remove.png);
+	background: url(Stock-Portfolio/png/remove.png);
 	border: none;
 	height: 12px;
 	width: 12px;
