@@ -1,6 +1,6 @@
 (function () {
 	angular.module('myApp', [])
-	.controller('Controller1', function(Service, items){
+	.controller('Controller1', function(Service, items, backitems){
 		var vm = this;
 
 		vm.submit = function() {
@@ -14,16 +14,23 @@
 			})
 		}
 
-	vm.delete = function(key) {
+		vm.delete = function(key) {
 			delete vm.stocks.price[key];
 		}
+
         vm.add = items.add; // transfer data to other controller
 
-        vm.currentPage = 0;  
+		vm.newlist = backitems.newlist; // add item back to list
+		
+        vm.currentPage = 0;
+
+		vm.remove = function(array, index) {
+				array.splice(index, 1);
+			}
          
 	})
 	
-	.controller('Controller2', function(items){
+	.controller('Controller2', function(items, backitems) {
 		var vm = this;
             vm.list = items.list;
             vm.priceHeld = 0;
@@ -120,7 +127,13 @@
 				    }]
 				});
 
-            } 
+            }
+
+			vm.back = backitems.add;
+
+			vm.remove = function(array, index) {
+				array.splice(index, 1);
+			}
 	})
 
 	.service('Service', function($http){
@@ -151,14 +164,28 @@
 	    return itemsService;
 	})
 
+	.factory('backitems', function(){
+		var backitems = [];
+		var backitemsService = {};
+    
+	    backitemsService.add = function(key, value, eps, history) {
+	        backitems.push({key, value, eps, history});
+	    };
+	    backitemsService.newlist = function() {
+	        return backitems;
+	    };
+	    
+	    return backitemsService;
+	})
+
 	.directive('increDecre', function(){
 		return {
 			scope: {
 				counter: '='
 			},
-			template: ` <button ng-click="counter = counter + 1" class="smallButton">+</button>
+			template: ` <button ng-click="counter = counter - 1" ng-disabled="counter == 0" class="smallButton">-</button>
 					    	<div id="counterValue" ng-model="detail.count">{{counter}}</div>
-					    <button ng-click="counter = counter - 1" ng-disabled="counter == 0" class="smallButton">-</button>`
+						<button ng-click="counter = counter + 1" class="smallButton">+</button>`
 		}
 	})
 

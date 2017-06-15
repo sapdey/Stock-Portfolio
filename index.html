@@ -24,17 +24,39 @@
 		<div class="container">
 		
 		<div id="remaining">Showing {{vm1.currentPage+1}} - {{vm1.currentPage+8}} of 24 matching stocks</div>
+		<div id="filter">
+			<span></span>
+			<p>APPLY FILTERS</p>
+			<div>3</div>
+		</div>
 		<div class="row">
 			<div ng-repeat="(key, value) in vm1.stocks.price" ng-if="$index >= vm1.currentPage && $index < vm1.currentPage+8" class="col-3">
-				<button id="myButton" style="max-width: 240px" ng-click="vm1.delete(key)">
-					<div ng-click="vm1.add(key, value, counter=1, eps = vm1.stocks.eps[key], history = vm1.stocks.historical[key]);" id="stock">
+				<div id="myButton" style="max-width: 240px">
+					<div id="stock">
 							<div id="leftStock">
 								<span id="stockName">{{key}}</span>
 								<span id="finanace">Financial Services</span>
 							</div>
-							<span id="stockValue">{{'₹' + value}}</span>
+							<span id="stockValue">
+								<div>{{'₹' + value}}</div>
+								<button id="addButton"  ng-click="vm1.add(key, value, counter=1, eps = vm1.stocks.eps[key], history = vm1.stocks.historical[key]); vm1.delete(key)"></button>
+							</span>
 					</div>
-				</button>
+				</div>
+			</div>
+			<div ng-repeat="item in vm1.newlist()"  class="col-3 ">
+				<div id="myButton" style="max-width: 240px">
+					<div id="stock">
+							<div id="leftStock">
+								<span id="stockName">{{item.key}}</span>
+								<span id="finanace">Financial Services</span>
+							</div>
+							<span id="stockValue">
+								<div>{{'₹' + item.value}}</div>
+								<button id="addButton"  ng-click="vm1.add(item.key, item.value, counter=1, item.eps, item.history); vm1.remove(vm1.newlist(), $index)"></button>								
+							</span>
+					</div>
+				</div>
 			</div>
 		</div>
 
@@ -70,7 +92,10 @@
 					</div>
 				</td>
 		
-				<td ng-if="vm2.netWorth>0">{{item.value * item.counter / vm2.netWorth | number:2}}%</td>
+				<td>
+					<span ng-if="vm2.netWorth>0">{{item.value * item.counter / vm2.netWorth | number:2}}%</span>
+					<button ng-click="vm2.back(item.key, item.value, item.eps, item.history); vm2.remove(vm2.list(), $index);" id="remove"></button>
+				</td>
 			</tr>
 		</table></div>
 		<div class="col-4">
