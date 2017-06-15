@@ -133,7 +133,7 @@ span > h4 {
 }
 
 #filter > span {
-	background: url(sapdey.github.io/Stock-Portfolio/png/filter.png);
+	background: url(../png/filter.png);
 	width: 17px;
 	height: 17px;
 	display: inline-block;
@@ -220,7 +220,7 @@ span > h4 {
 }
 
 #addButton {
-	background: url(sapdey.github.io/Stock-Portfolio/png/add.png);
+	background: url(../png/add.png);
 	width: 28px;
 	height: 28px;
 	border-width: 0px;
@@ -335,7 +335,7 @@ tr {
 }
 
 #remove {
-	background: url(sapdey.github.io/Stock-Portfolio/png/remove.png);
+	background: url(../png/remove.png);
 	border: none;
 	height: 12px;
 	width: 12px;
