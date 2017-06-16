@@ -44,7 +44,7 @@
 					</div>
 				</div>
 			</div>
-			<div ng-repeat="item in vm1.newlist()"  class="col-3 ">
+			<div ng-repeat="item in vm1.newlist()"  class="col-3" ng-if="$index + 12 < vm1.currentPage">
 				<div id="myButton" style="max-width: 240px">
 					<div id="stock">
 							<div id="leftStock">
